@@ -129,7 +129,7 @@
                     this.ctx.currentPage = response.data[0].current_page
                     this.ctx.firstPageUrl = response.data[0].first_page_url
                     this.ctx.from = response.data[0].from
-                    this.ctx.lastPage = response.data[0].last_page
+                    this.ctx.lastPage = response.data[0].last_page 
                     this.ctx.lastPageUrl = response.data[0].last_page_url
                     this.ctx.nextPageUrl = response.data[0].next_page_url
                     this.ctx.path = response.data[0].path
