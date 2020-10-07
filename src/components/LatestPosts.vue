@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-md-6" v-for="post in posts.slice(3)" :key="post.id">
-        <a
-          href="blog-single.html"
+      <div class="col-md-6" v-for="post in posts" :key="post.id">
+        <span
+          @click="singlePost(post)"
           class="blog-entry element-animate fadeIn element-animated"
           data-animate-effect="fadeIn"
         >
@@ -18,7 +18,7 @@
             </div>
             <h2>{{ post.title }}</h2>
           </div>
-        </a>
+        </span>
       </div>
     </div>
 
@@ -158,7 +158,18 @@ export default {
           this.ctx.prevPageUrl = response.data[0].prev_page_url;
           this.ctx.to = response.data[0].to;
           this.ctx.total = response.data[0].total;
+
+          this.posts = this.posts.slice(3, 11)
+          
         });
+    },
+    singlePost(post) {
+      this.$router.push({
+        name: "SinglePost",
+        params: {
+          slug: post.slug,
+        },
+      });
     },
   },
   mounted() {
