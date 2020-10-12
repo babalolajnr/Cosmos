@@ -132,7 +132,7 @@
                     class="img-fluid"
                   />
                 </div>
-                <p v-html="post.body"></p>
+                <p class="p-3" v-html="post.body"></p>
               </div>
              </div>
 

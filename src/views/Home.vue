@@ -145,7 +145,6 @@
               </div>
             </span>
           </div>
-          
         </div>
       </div>
     </section>
@@ -172,8 +171,8 @@
         </div>
       </div>
     </section>
-    <Footer/>
-    
+    <Footer />
+
     <!-- END footer -->
   </div>
 </template>
@@ -190,7 +189,7 @@ export default {
     MyCarousel,
     LatestPosts,
     Sidebar,
-    Footer
+    Footer,
   },
   data() {
     return {
@@ -214,14 +213,20 @@ export default {
           // console.log(this.topLatestPosts)
         });
     },
-    singlePost(post){
-      this.$router.push({
-        name: 'SinglePost',
-        params: {
-          slug: post.slug
-        }
-      })
-    }
+    singlePost(post) {
+      this.axios
+        .get(`http://127.0.0.1:8000/api/addView/${post.id}`)
+        .then((response) => {
+          if (response.status === 200) {
+            this.$router.push({
+              name: "SinglePost",
+              params: {
+                slug: post.slug,
+              },
+            });
+          }
+        });
+    },
   },
   mounted() {
     this.getTopLatestPosts();
